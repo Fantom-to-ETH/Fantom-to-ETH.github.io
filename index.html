@@ -8,39 +8,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Fantom Chain — RPC/Chain ID, Gas, Bridging, Staking, DeFi, Security &amp; Troubleshooting (2026)</title>
-  <meta name="description" content="Fantom Chain guide (2026): what Fantom is, network details (RPC/Chain ID), gas token, wallets, bridging to Fantom, validators &amp; staking basics, DeFi basics, explorers, security checklist, common issues &amp; troubleshooting. Includes KPIs, runbook, and a deep FAQ.">
+  <title>Fantom to ETH — Bridge Fees, Time, Step-by-Step, Security & Troubleshooting (2026)</title>
+  <meta name="description" content="Fantom to ETH bridge guide (2026): how bridging back to Ethereum works, fees & timing, gas planning (FTM + ETH), step-by-step workflow, verification on explorers, security checklist, and troubleshooting for common bridge issues. Includes KPIs, runbook, and a deep FAQ.">
   <meta name="author" content="Crypto Finance Experts">
-  <link rel="canonical" href="https://fantom-chain.example.com/">
+  <link rel="canonical" href="https://fantom-to-eth.example.com/">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="fantom-ftm-logo.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://fantom-chain.example.com/">
-  <meta property="og:title" content="Fantom Chain — RPC/Chain ID, Gas, Bridging, Security &amp; Troubleshooting (2026)">
-  <meta property="og:description" content="Practical Fantom Chain guide: network setup, gas, bridging, explorers, safety checklist, and troubleshooting.">
+  <meta property="og:url" content="https://fantom-to-eth.example.com/">
+  <meta property="og:title" content="Fantom to ETH — Bridge Fees, Time, Security & Troubleshooting (2026)">
+  <meta property="og:description" content="Practical Fantom to ETH guide: prepare wallet + gas, bridge safely, verify on explorers, and fix common issues.">
   <meta property="og:image" content="Fantom-1.png">
 
   <!-- Twitter Card -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://fantom-chain.example.com/">
-  <meta property="twitter:title" content="Fantom Chain — Wallet Setup, Gas, Bridging, Security (2026)">
-  <meta property="twitter:description" content="Deep Fantom Chain guide: RPC/chain ID, explorers, bridging, staking basics, DeFi, and FAQs.">
+  <meta property="twitter:url" content="https://fantom-to-eth.example.com/">
+  <meta property="twitter:title" content="Fantom to ETH — Wallet Setup, Fees, Security (2026)">
+  <meta property="twitter:description" content="Deep Fantom to ETH guide: network setup, gas planning, bridging workflow, verification, security, and FAQs.">
   <meta property="twitter:image" content="Fantom-1.png">
 
   <style>
     :root{
-      /* Fantom-inspired blue/white theme */
-      --primary:#167DFF;        /* bright blue */
+      /* Clean blue/white theme */
+      --primary:#167DFF;
       --primary-600:#0F66D1;
       --primary-700:#0B4FA3;
-      --accent:#22D3EE;         /* cyan accent */
+      --accent:#22D3EE;
 
-      --ink:#071021;            /* deep navy */
-      --muted:#475569;          /* slate-600 */
-      --muted-2:#64748B;        /* slate-500 */
+      --ink:#071021;
+      --muted:#475569;
+      --muted-2:#64748B;
 
       --bg:#F6FAFF;
       --panel:#FFFFFF;
@@ -145,7 +145,6 @@
       flex:0 0 auto;
     }
 
-    /* SINGLE CTA — centered, big, attractive */
     .cta-center{
       display:flex;
       justify-content:center;
@@ -192,7 +191,6 @@
       margin-top:1rem;
     }
 
-    /* HERO IMAGE — framed, clean */
     .hero-media{
       position:relative;
       border-radius:var(--radius-lg);
@@ -204,7 +202,7 @@
     .hero-media::before{
       content:"";
       display:block;
-      padding-top:56.25%; /* 16:9 */
+      padding-top:56.25%;
     }
     .hero-img{
       position:absolute;
@@ -244,7 +242,6 @@
       box-shadow: 0 12px 26px rgba(7,16,33,.10);
     }
 
-    .grid-2{display:grid; gap:var(--gap); grid-template-columns:1fr;}
     .toc{
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(22,125,255,.06), rgba(255,255,255,.75));
@@ -302,7 +299,6 @@
       font-size:.9rem;
     }
 
-    /* SECONDARY IMAGE — do NOT stretch/crop */
     .content-media{
       width:100%;
       display:flex;
@@ -345,7 +341,6 @@
 
     @media (min-width: 860px){
       .steps{grid-template-columns: repeat(4, 1fr)}
-      .grid-2{grid-template-columns: 1fr 1fr}
       .callout-grid{grid-template-columns: 1fr 1fr}
     }
   </style>
@@ -360,66 +355,65 @@
         <img class="brand-logo" src="fantom-ftm-logo.png" alt="Fantom logo">
         <div>
           <div class="muted" style="font-weight:950; letter-spacing:.2px;">Operational Guide</div>
-          <div class="muted-2" style="font-size:.95rem;">RPC/Chain ID • Gas • Bridging • Staking Basics • Security • Troubleshooting</div>
+          <div class="muted-2" style="font-size:.95rem;">Wallet Setup • Fees • Time • Bridge Steps • Verification • Security</div>
         </div>
       </div>
 
-      <h1>Fantom Chain</h1>
+      <h1>Fantom to ETH</h1>
       <p class="lead">
-        This is a practical, security-first guide to <strong>Fantom Chain</strong>: how to set up the network in your wallet (RPC / Chain ID),
-        what you use for gas, how to bridge assets to Fantom, how staking works at a high level,
-        how to verify transactions on explorers, and how to troubleshoot the most common “missing funds / wrong network / token not showing” problems.
+        This is a practical, security-first guide to <strong>bridging from Fantom to Ethereum (ETH)</strong>:
+        how to plan gas on both sides (<strong>FTM</strong> on Fantom + <strong>ETH</strong> on Ethereum),
+        bridge safely (test first), verify on explorers, and troubleshoot the most common
+        “pending bridge / missing funds / wrong network / token not showing” problems.
       </p>
 
-      <!-- ONE CENTERED BUTTON -->
       <div class="cta-center">
-        <a href="https://fantom.foundation/" class="cta" aria-label="Open Fantom official site">
-          Open Fantom
+        <a href="https://coinmarketcap.com/currencies/fantom/" class="cta" aria-label="Open Fantom market page on CoinMarketCap">
+          Open FTM Market Data
         </a>
       </div>
 
       <div class="note">
-        <strong>Quick rule:</strong> if you’re doing anything new on Fantom Chain (new wallet, new bridge, new dApp),
-        start with a small test transaction and verify it on the explorer.
+        <strong>Quick rule:</strong> always bridge a small test amount first, then verify it on both explorers before you scale size.
       </div>
     </div>
 
     <div class="hero-media" aria-hidden="true">
-      <img class="hero-img" src="Fantom-1.png" alt="Fantom Chain hero image">
+      <img class="hero-img" src="Fantom-1.png" alt="Fantom to ETH hero image">
     </div>
   </div>
 </header>
 
 <section class="step-guide" aria-labelledby="how-works">
   <div class="container">
-    <h2 id="how-works">Fantom Chain Workflow: Add Network → Fund Gas → Bridge/Transfer → Use Apps → Verify</h2>
+    <h2 id="how-works">Fantom → ETH Workflow: Prepare → Bridge (Test) → Verify → Receive → Operate</h2>
     <div class="steps" role="list">
       <article class="step" role="listitem">
         <div class="icon">①</div>
-        <h3>Add Fantom Chain network (RPC + Chain ID)</h3>
+        <h3>Prepare both networks (Fantom + Ethereum)</h3>
         <p>
-          Configure Fantom in your wallet using official network details. Wrong chain selection is the #1 cause of confusion.
+          Confirm you’re using Fantom Opera (source) and Ethereum mainnet (destination). Wrong network is the #1 cause of confusion.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">②</div>
-        <h3>Fund gas (FTM) before doing anything</h3>
+        <h3>Plan gas on both sides</h3>
         <p>
-          Keep FTM in your wallet to pay for transactions. Without gas, you can’t swap, approve, revoke, or fix mistakes.
+          You’ll pay <strong>FTM</strong> gas to initiate on Fantom, and you may need <strong>ETH</strong> later on Ethereum depending on what you do after receiving.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">③</div>
-        <h3>Bridge assets to Fantom Chain (test first)</h3>
+        <h3>Bridge a small test amount first</h3>
         <p>
-          Use reputable bridges, verify the destination chain, and start small to confirm your setup and token visibility.
+          Confirm the route and receipt before bridging size. Avoid “double-send” when a UI is slow.
         </p>
       </article>
       <article class="step" role="listitem">
         <div class="icon">④</div>
-        <h3>Verify on explorer (source of truth)</h3>
+        <h3>Verify on explorers (source of truth)</h3>
         <p>
-          Wallet UIs can lag. Use the Fantom explorer to verify tx status, token contracts, and balances.
+          Use <strong>FTMScan</strong> (source) + <strong>Etherscan</strong> (destination) to validate status and receipts.
         </p>
       </article>
     </div>
@@ -429,163 +423,165 @@
 <main class="container" role="main">
 
   <section class="card toc" aria-label="Table of Contents">
-    <strong>On this page (Fantom Chain):</strong>
+    <strong>On this page (Fantom to ETH):</strong>
     <ul>
-      <li><a href="#overview">Fantom Chain overview (what it is &amp; who it’s for)</a></li>
-      <li><a href="#network">Fantom Chain network details: RPC, chain ID, explorer</a></li>
-      <li><a href="#gas">Fantom Chain gas: what you pay fees with</a></li>
-      <li><a href="#bridge">How to bridge to Fantom Chain safely</a></li>
-      <li><a href="#staking">Fantom Chain staking basics (high level)</a></li>
-      <li><a href="#defi">Fantom Chain DeFi basics: swaps, approvals, risks</a></li>
-      <li><a href="#security">Fantom Chain security checklist</a></li>
-      <li><a href="#troubleshooting">Fantom Chain troubleshooting</a></li>
-      <li><a href="#sources">Authoritative sources &amp; references</a></li>
-      <li><a href="#faq">Fantom Chain FAQ (deep)</a></li>
+      <li><a href="#overview">Overview: what Fantom to ETH bridging is</a></li>
+      <li><a href="#networks">Network details: Fantom vs Ethereum (Chain ID, gas, explorers)</a></li>
+      <li><a href="#fees">Fees & timing: what you actually pay and how long it takes</a></li>
+      <li><a href="#steps">How to bridge Fantom to ETH safely (step-by-step)</a></li>
+      <li><a href="#tokens">Bridged asset variants & token visibility</a></li>
+      <li><a href="#security">Security checklist (high impact)</a></li>
+      <li><a href="#troubleshooting">Troubleshooting: stuck/pending/missing</a></li>
+      <li><a href="#sources">Authoritative sources & references</a></li>
+      <li><a href="#faq">FAQ (deep)</a></li>
     </ul>
   </section>
 
   <section class="card" id="overview">
-    <h2>Fantom Chain Overview: What Fantom Is (and Why People Use It)</h2>
+    <h2>Fantom to ETH Overview: What Bridging Back to Ethereum Means</h2>
     <p>
-      <strong>Fantom Chain</strong> is an EVM-compatible blockchain used for fast transactions, DeFi applications, and token transfers.
-      Most users interact with Fantom through EVM wallets (like MetaMask) and verify activity on Fantom explorers.
-      Operational success on Fantom comes down to correct network setup, gas management, and careful approval hygiene.
+      <strong>Fantom to ETH</strong> bridging means moving value from Fantom Opera back to Ethereum mainnet.
+      Operational success is mostly about: (1) correct source/destination selection, (2) gas planning, and (3) verifying receipts on explorers.
     </p>
 
     <div class="callout-grid" role="list">
       <div class="mini" role="listitem">
-        <h3>Best use-cases on Fantom Chain</h3>
+        <h3>Why people bridge Fantom to Ethereum</h3>
         <p class="muted">
-          Swaps, DeFi, NFT activity, and low-fee transfers with EVM tooling.
+          Consolidate funds on Ethereum, move to a CEX, rebalance portfolios, or access Ethereum-only apps/liquidity.
         </p>
         <div class="kpi-badges">
-          <span>EVM compatible</span><span>Fast tx</span><span>Low fees</span>
+          <span>Liquidity access</span><span>Portfolio moves</span><span>Settlement</span>
         </div>
       </div>
 
       <div class="mini" role="listitem">
-        <h3>What to watch</h3>
+        <h3>What usually goes wrong</h3>
         <p class="muted">
-          Bridge risks, token spoofing, and approvals. Use verified token contracts and revoke stale allowances.
+          Insufficient FTM gas on Fantom, wrong destination chain, and UI confusion about finality/receipt status.
         </p>
         <div class="kpi-badges">
-          <span>Bridge risk</span><span>Approvals</span><span>Verify contracts</span>
+          <span>No gas</span><span>Wrong chain</span><span>UI lag</span>
         </div>
       </div>
     </div>
 
     <div class="note">
-      <strong>Operational truth:</strong> “missing tokens” are usually a visibility problem (wrong chain, token not added, wrong contract),
-      not a blockchain problem. Verify on explorer first.
+      <strong>Operational truth:</strong> “missing funds” are usually a visibility or pending-finality problem. Verify status on explorers before taking action.
     </div>
 
     <div class="content-media">
-      <img class="content-img" src="fantm2.png" alt="Fantom Chain secondary image">
+      <img class="content-img" src="fantm2.png" alt="Fantom to ETH secondary image">
     </div>
   </section>
 
-  <section class="card" id="network">
-    <h2>Fantom Chain Network Details: RPC, Chain ID, Currency, Explorer</h2>
+  <section class="card" id="networks">
+    <h2>Network Details: Fantom (Source) vs Ethereum (Destination)</h2>
     <p>
-      Setting up <strong>Fantom Chain</strong> correctly in your wallet prevents most issues.
-      Fantom Opera (mainnet) is commonly configured with Chain ID <strong>250</strong>, currency <strong>FTM</strong>,
-      and explorer <strong>ftmscan.com</strong>.
+      Bridging out starts on <strong>Fantom Opera</strong> and ends on <strong>Ethereum</strong>.
+      Confirm chain IDs, gas tokens, and explorers so you always know what “truth” looks like.
     </p>
 
-    <table aria-label="Fantom chain parameters">
+    <table aria-label="Fantom to ETH network parameters">
       <thead>
         <tr>
-          <th>Parameter</th>
-          <th>Value</th>
-          <th>Why it matters</th>
+          <th>Network</th>
+          <th>Chain ID</th>
+          <th>Gas token</th>
+          <th>Explorer</th>
         </tr>
       </thead>
       <tbody>
         <tr class="highlight">
-          <td>Network name</td>
-          <td>Fantom Opera</td>
-          <td>So you know you’re on the correct Fantom Chain</td>
-        </tr>
-        <tr>
-          <td>Chain ID</td>
+          <td>Fantom Opera (source)</td>
           <td><span class="mono">250</span></td>
-          <td>Critical to prevent wrong-chain transactions</td>
-        </tr>
-        <tr>
-          <td>Currency (gas token)</td>
           <td>FTM</td>
-          <td>Needed to pay fees on Fantom Chain</td>
+          <td><span class="mono">https://ftmscan.com</span></td>
         </tr>
         <tr>
-          <td>Explorer</td>
-          <td><span class="mono">https://ftmscan.com</span></td>
-          <td>Verification source of truth</td>
+          <td>Ethereum (destination)</td>
+          <td><span class="mono">1</span></td>
+          <td>ETH</td>
+          <td><span class="mono">https://etherscan.io</span></td>
         </tr>
       </tbody>
     </table>
 
     <div class="note">
-      <strong>Safety:</strong> use official Fantom docs or trusted registries (like Chainlist) for RPC endpoints and network settings.
+      <strong>Safety:</strong> if you copy network settings (RPC endpoints), use a reputable registry and avoid random “add network” popups.
     </div>
   </section>
 
-  <section class="card" id="gas">
-    <h2>Fantom Chain Gas: What You Pay Transaction Fees With</h2>
+  <section class="card" id="fees">
+    <h2>Fees & Timing: What Fantom → ETH Bridging Really Costs</h2>
     <p>
-      On <strong>Fantom Chain</strong>, you pay transaction fees with <strong>FTM</strong>.
-      You need gas for approvals, swaps, transfers, bridging actions, and recovery steps (revokes, retries).
+      Total bridging cost is usually a combination of:
+      <strong>(1)</strong> Fantom gas to initiate,
+      <strong>(2)</strong> bridge protocol fees (if any),
+      and <strong>(3)</strong> Ethereum gas later when you receive/use funds (depending on your next step).
     </p>
-    <ul>
-      <li><strong>Always keep a buffer:</strong> don’t spend your last FTM.</li>
-      <li><strong>Approvals cost gas:</strong> every token approval is a transaction.</li>
-      <li><strong>Recovery needs gas:</strong> revoking allowances and moving funds requires FTM.</li>
-    </ul>
+
+    <table aria-label="Fantom to ETH fees checklist">
+      <thead>
+        <tr>
+          <th>Cost area</th>
+          <th>Paid in</th>
+          <th>What it covers</th>
+          <th>Common mistake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>Source chain tx</td>
+          <td>FTM</td>
+          <td>Initiating the bridge on Fantom</td>
+          <td>Starting with 0 FTM and getting stuck</td>
+        </tr>
+        <tr>
+          <td>Bridge fee</td>
+          <td>Varies</td>
+          <td>Protocol/relayer fee (route-dependent)</td>
+          <td>Assuming “cheap” means “instant”</td>
+        </tr>
+        <tr>
+          <td>Destination ops</td>
+          <td>ETH</td>
+          <td>Using funds on Ethereum after receipt</td>
+          <td>Not budgeting for Ethereum gas spikes</td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="note">
-      <strong>Rule:</strong> if you’re bridging to Fantom, include extra FTM (or a plan to obtain it) so you can transact immediately.
+      <strong>Best practice:</strong> if a bridge UI looks stuck, don’t resend. Verify the source tx hash on FTMScan first, then check destination receipts on Etherscan.
     </div>
   </section>
 
-  <section class="card" id="bridge">
-    <h2>How to Bridge to Fantom Chain Safely (Operational Steps)</h2>
+  <section class="card" id="steps">
+    <h2>How to Bridge Fantom to ETH Safely (Step-by-Step)</h2>
     <ol>
-      <li><strong>Use a reputable bridge:</strong> prefer well-known providers and official links from Fantom ecosystem resources.</li>
-      <li><strong>Confirm destination chain:</strong> Fantom Opera (Chain ID 250).</li>
-      <li><strong>Test first:</strong> send a small amount and verify arrival on <span class="inline-code">ftmscan.com</span>.</li>
-      <li><strong>Add token correctly:</strong> use verified token contract addresses from explorers or official sources.</li>
-      <li><strong>Keep gas buffer:</strong> ensure you have FTM to transact on Fantom after bridging.</li>
+      <li><strong>Confirm source chain:</strong> Fantom Opera (Chain ID 250) and correct wallet account.</li>
+      <li><strong>Confirm destination chain:</strong> Ethereum mainnet (Chain ID 1).</li>
+      <li><strong>Start with a test amount:</strong> small enough that mistakes are cheap.</li>
+      <li><strong>Record hashes:</strong> save the source tx hash immediately.</li>
+      <li><strong>Verify on explorers:</strong> FTMScan for initiation, Etherscan for destination receipt.</li>
+      <li><strong>Validate asset/contract:</strong> check what you actually received on Ethereum.</li>
+      <li><strong>Plan ETH gas:</strong> if you need to move/unwrap/swap on Ethereum, budget for gas before you rush.</li>
     </ol>
 
     <div class="note">
-      <strong>Most common bridge mistake:</strong> users bridge correctly but stay on Ethereum in their wallet, then think funds are missing.
+      <strong>Most common mistake:</strong> user expects “ETH” to appear instantly as native ETH. Some routes deliver a wrapped/bridged representation first.
     </div>
   </section>
 
-  <section class="card" id="staking">
-    <h2>Fantom Chain Staking Basics: Validators, Delegation, and Real-World Gotchas</h2>
+  <section class="card" id="tokens">
+    <h2>Received Asset Variants: Why “ETH” Might Look Different After Bridging</h2>
     <p>
-      <strong>Fantom staking</strong> (delegation to validators) is an on-chain mechanism where you lock/delegate FTM to help secure the network and earn rewards.
-      The operational risks are usually: validator reliability, lock/unlock rules, and UI confusion around claiming/unlocking.
-    </p>
-    <ul>
-      <li><strong>Validator selection matters:</strong> uptime and reputation are more important than headline yields.</li>
-      <li><strong>Locking rules:</strong> understand any lock periods and unlocking steps before you stake.</li>
-      <li><strong>Track net outcomes:</strong> fees, claim cadence, and lock time change real returns.</li>
-    </ul>
-
-    <div class="note">
-      <strong>Best practice:</strong> delegate a small test amount first, confirm rewards behavior, then scale in.
-    </div>
-  </section>
-
-  <section class="card" id="defi">
-    <h2>Fantom Chain DeFi Basics: Swaps, Approvals, and Risk Management</h2>
-    <p>
-      On <strong>Fantom Chain</strong>, DeFi usage typically involves token approvals and swaps.
-      The main avoidable risks are malicious approvals and interacting with fake token contracts.
+      Depending on the route, you may receive a wrapped/bridged representation under a specific contract.
+      The fix is always the same: <strong>verify the exact token contract on Etherscan</strong>, then add it to your wallet UI if needed.
     </p>
 
-    <table aria-label="DeFi hygiene on Fantom Chain">
+    <table aria-label="Token visibility and approvals">
       <thead>
         <tr>
           <th>Action</th>
@@ -595,187 +591,196 @@
       </thead>
       <tbody>
         <tr class="highlight">
-          <td>Approve token</td>
-          <td>Grants a contract permission to spend your token</td>
-          <td>Unlimited approvals to unknown contracts</td>
+          <td>Add token</td>
+          <td>Shows the correct received token in your wallet</td>
+          <td>Assuming it will auto-appear without adding contract</td>
         </tr>
         <tr>
-          <td>Swap</td>
-          <td>Trades token A for token B on a DEX</td>
-          <td>Swapping spoofed tokens or wrong contract addresses</td>
+          <td>Approve token</td>
+          <td>Lets a dApp spend your token</td>
+          <td>Unlimited approvals to unknown contracts</td>
         </tr>
       </tbody>
     </table>
 
     <div class="note">
-      <strong>Rule:</strong> use verified token contracts (explorer) and revoke approvals you don’t need anymore.
+      <strong>Rule:</strong> explorers first, UI second. Verify contracts before interacting.
     </div>
   </section>
 
   <section class="card" id="security">
-    <h2>Fantom Chain Security Checklist: High-Impact Habits</h2>
+    <h2>Fantom to ETH Security Checklist: High-Impact Habits</h2>
     <ul>
-      <li><strong>Bookmark official sites:</strong> bridges, wallets, explorers.</li>
-      <li><strong>Verify token contracts:</strong> use explorers to confirm legitimacy.</li>
+      <li><strong>Bookmark trusted references:</strong> market sites (CMC/CG), explorers (FTMScan/Etherscan), and Chainlist for chain IDs.</li>
+      <li><strong>Verify chain IDs:</strong> Fantom = 250, Ethereum = 1.</li>
+      <li><strong>Test first:</strong> small test bridge before scaling.</li>
+      <li><strong>Verify receipts:</strong> confirm status on both explorers before resending.</li>
       <li><strong>Use minimal approvals:</strong> avoid unlimited allowances when possible.</li>
-      <li><strong>Revoke stale allowances:</strong> periodically review approvals.</li>
-      <li><strong>Separate wallets:</strong> “vault” vs “daily use” wallet.</li>
-      <li><strong>Explorer-first mindset:</strong> wallet UI can lag; explorer is truth.</li>
+      <li><strong>Revoke stale approvals:</strong> clean up regularly.</li>
+      <li><strong>Don’t “double-send”:</strong> if UI is slow, verify hashes instead of retrying.</li>
     </ul>
 
     <div class="note">
-      <strong>Most avoidable loss:</strong> phishing + approvals. Slow down and confirm domains and contracts.
+      <strong>Most avoidable loss:</strong> phishing + approvals. Slow down, verify domains, and confirm contracts.
     </div>
   </section>
 
   <section class="card" id="troubleshooting">
-    <h2>Fantom Chain Troubleshooting: Common Issues and Fixes</h2>
+    <h2>Troubleshooting: Fantom → ETH Bridge Issues (Common Fixes)</h2>
 
-    <h3>“My tokens are missing on Fantom Chain”</h3>
+    <h3>“My funds are missing after bridging to Ethereum”</h3>
     <ul>
-      <li>Confirm you’re on <strong>Fantom Opera</strong> network in the wallet.</li>
-      <li>Check your address on <span class="inline-code">ftmscan.com</span> and confirm the token transfer exists.</li>
-      <li>Add the token manually only if you confirmed the contract address on the explorer.</li>
+      <li>Confirm you’re on <strong>Ethereum mainnet</strong> in the wallet.</li>
+      <li>Search your address on <span class="inline-code">etherscan.io</span> and verify the receipt/contract.</li>
+      <li>Verify the source tx on <span class="inline-code">ftmscan.com</span> to confirm initiation.</li>
+      <li>Add the received token by contract if it doesn’t auto-show.</li>
     </ul>
 
-    <h3>“Transaction failed / stuck / pending”</h3>
+    <h3>“Bridge is pending / stuck / UI shows nothing”</h3>
     <ul>
-      <li>Check current gas and network congestion; retry with sufficient gas.</li>
-      <li>Wallet RPC issues: switch RPC endpoints from trusted sources.</li>
-      <li>Explorer-first: if explorer says “success”, it’s usually UI caching.</li>
+      <li>Verify the source tx hash on <span class="inline-code">ftmscan.com</span>.</li>
+      <li>Wait for required confirmations; don’t resend just because UI is slow.</li>
+      <li>Check your address on Etherscan for the destination receipt.</li>
     </ul>
 
-    <h3>“Bridge deposit shows success but balance is wrong”</h3>
+    <h3>“I received a token but it isn’t native ETH”</h3>
     <ul>
-      <li>Verify the destination chain in the bridge history.</li>
-      <li>Confirm the token contract on Fantom explorer.</li>
-      <li>Reconnect wallet and refresh token lists; do not resend blindly.</li>
+      <li>That can be normal depending on the route. Verify the token contract on Etherscan.</li>
+      <li>Do not interact until you confirm the token contract is legitimate.</li>
+      <li>Plan ETH gas for any unwrap/swap steps if needed.</li>
     </ul>
 
     <div class="note">
-      <strong>Golden rule:</strong> if explorer shows “success”, your funds are almost never “gone”.
+      <strong>Golden rule:</strong> if explorers show “success”, funds are almost never “gone”.
       Fix chain/account/token visibility first.
     </div>
   </section>
 
   <section class="sources" id="sources" aria-labelledby="sources-title">
-    <h2 id="sources-title">Authoritative Sources &amp; References</h2>
-    <p>Use these official and high-quality references for Fantom Chain setup, verification, and security hygiene:</p>
+    <h2 id="sources-title">Authoritative Sources & References</h2>
+    <p>Use these reputable, neutral references to track ETH/FTM data, verify transactions, and confirm network settings.</p>
 
-    <h3>Official Fantom</h3>
+    <h3>Market data (FTM & ETH)</h3>
     <ul>
-      <li><a href="https://fantom.foundation/" target="_blank" rel="noopener nofollow">Fantom Foundation — Official site</a></li>
-      <li><a href="https://docs.fantom.foundation/" target="_blank" rel="noopener nofollow">Fantom Docs (network, tools, staking)</a></li>
+      <li><a href="https://coinmarketcap.com/currencies/fantom/" target="_blank" rel="noopener nofollow">CoinMarketCap — Fantom (FTM)</a></li>
+      <li><a href="https://www.coingecko.com/en/coins/fantom" target="_blank" rel="noopener nofollow">CoinGecko — Fantom (FTM)</a></li>
+      <li><a href="https://coinmarketcap.com/currencies/ethereum/" target="_blank" rel="noopener nofollow">CoinMarketCap — Ethereum (ETH)</a></li>
+      <li><a href="https://www.coingecko.com/en/coins/ethereum" target="_blank" rel="noopener nofollow">CoinGecko — Ethereum (ETH)</a></li>
     </ul>
 
-    <h3>Network settings &amp; explorers</h3>
+    <h3>Transaction verification (source of truth)</h3>
     <ul>
-      <li><a href="https://ftmscan.com/" target="_blank" rel="noopener nofollow">FTMScan — Fantom Explorer</a></li>
-      <li><a href="https://chainlist.org/chain/250" target="_blank" rel="noopener nofollow">Chainlist — Fantom (Chain ID 250)</a></li>
+      <li><a href="https://ftmscan.com/" target="_blank" rel="noopener nofollow">FTMScan — Fantom explorer</a></li>
+      <li><a href="https://etherscan.io/" target="_blank" rel="noopener nofollow">Etherscan — Ethereum explorer</a></li>
+    </ul>
+
+    <h3>Network configuration</h3>
+    <ul>
+      <li><a href="https://chainlist.org/chain/250" target="_blank" rel="noopener nofollow">Chainlist — Fantom Opera (Chain ID 250)</a></li>
+      <li><a href="https://chainlist.org/chain/1" target="_blank" rel="noopener nofollow">Chainlist — Ethereum (Chain ID 1)</a></li>
     </ul>
 
     <h3>Security hygiene</h3>
     <ul>
-      <li><a href="https://ethereum.org/guides/how-to-revoke-token-access/" target="_blank" rel="noopener nofollow">Ethereum.org — Revoke token approvals</a></li>
-      <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — Allowance management</a></li>
-      <li><a href="https://blog.openzeppelin.com/" target="_blank" rel="noopener nofollow">OpenZeppelin — Smart contract security</a></li>
+      <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — revoke token approvals</a></li>
+      <li><a href="https://blog.openzeppelin.com/" target="_blank" rel="noopener nofollow">OpenZeppelin Blog — smart contract security</a></li>
     </ul>
 
     <div class="note">
-      <strong>Tip:</strong> for staking and validator info, prefer Fantom’s official staking resources and explorers rather than third-party lists.
+      <strong>Tip:</strong> treat explorers as truth, and treat market sites as reference. If a bridge UI looks wrong, verify hashes on FTMScan/Etherscan first.
     </div>
   </section>
 
   <section class="card faq-section" aria-labelledby="faq">
-    <h2 id="faq">Fantom Chain FAQ: The Most Asked Questions (2026)</h2>
+    <h2 id="faq">Fantom to ETH FAQ: The Most Asked Questions (2026)</h2>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
-        <h3>What is Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>What does “Fantom to ETH” mean?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
-        <p><strong>Fantom Chain</strong> is an EVM-compatible blockchain used for fast transactions and DeFi activity. Most users interact with it using EVM wallets and verify activity via FTMScan.</p>
+        <p><strong>Fantom to ETH</strong> means bridging value from Fantom Opera back to Ethereum mainnet. Always verify the result on explorers.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
-        <h3>What is Fantom chain ID?</h3><span class="faq-plus">+</span>
+        <h3>Which chain IDs should I confirm before bridging?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
-        <p>Fantom Opera mainnet is commonly configured with Chain ID <strong>250</strong>. Always confirm network settings with official docs or Chainlist.</p>
+        <p>Fantom Opera is commonly <strong>Chain ID 250</strong>, and Ethereum mainnet is commonly <strong>Chain ID 1</strong>. Confirm in your wallet before you send.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
-        <h3>What token pays gas on Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>Do I need gas on Fantom and Ethereum?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
-        <p><strong>FTM</strong> pays gas on Fantom Chain. Keep a buffer for swaps, approvals, transfers, revokes, and troubleshooting actions.</p>
+        <p>Yes. You’ll need <strong>FTM</strong> to initiate on Fantom, and you may need <strong>ETH</strong> on Ethereum after receipt depending on your next actions.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
-        <h3>Which explorer should I use for Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>Bridge shows success but wallet doesn’t show funds — what now?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
-        <p>The main explorer is <strong>FTMScan</strong> (<span class="inline-code">ftmscan.com</span>). Use it to verify tx status, token contracts, and balances.</p>
+        <p>Usually wrong network, wrong account, token contract not added, or wallet UI caching. Verify your address on Etherscan first.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
-        <h3>Why are my tokens missing after bridging to Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>Should I resend if the bridge looks stuck?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
-        <p>Most common causes: wallet is on the wrong network, token isn’t added in the wallet UI, or you used the wrong token contract address. Verify on FTMScan first.</p>
+        <p>No. Verify the source tx on FTMScan and check destination receipts on Etherscan. Resending blindly can create duplicates.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
-        <h3>What is the safest way to start using Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>Can the received asset be a wrapped/bridged token?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
-        <p>Add Fantom network settings from official sources, fund a small amount of FTM for gas, do a small test transfer, and verify the result on the explorer before scaling up.</p>
+        <p>Yes. Some routes deliver a wrapped/bridged representation. Always confirm the contract on Etherscan before interacting.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
-        <h3>Can I revoke token approvals on Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>Can I revoke approvals on Fantom?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
-        <p>Yes. Use an allowance tool like Revoke.cash while connected to Fantom Chain, and revoke approvals you no longer need.</p>
+        <p>Yes. Connect to Fantom Opera and use an allowance tool (like Revoke.cash) to revoke approvals you no longer need.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
-        <h3>Is staking on Fantom Chain “safe”?</h3><span class="faq-plus">+</span>
+        <h3>Which explorers should I use for verification?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
-        <p>Staking risk depends on validator reliability, lock/unlock rules, and operational mistakes. Reduce risk by delegating a small test amount first, choosing reputable validators, and understanding unlock timing.</p>
+        <p>Use <strong>FTMScan</strong> for Fantom and <strong>Etherscan</strong> for Ethereum. Treat explorers as the source of truth.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
-        <h3>My transaction shows success on FTMScan but wallet balance is wrong — what now?</h3><span class="faq-plus">+</span>
+        <h3>What if I have no FTM gas to initiate the bridge?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
-        <p>This is usually wallet/RPC caching. Trust the explorer, reconnect your wallet, refresh token lists, or switch RPC endpoints from trusted sources.</p>
+        <p>You’ll need a small amount of <strong>FTM</strong> for gas on Fantom to start. Plan gas before you try to move funds out.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-button" aria-expanded="false" aria-controls="f10" id="b10">
-        <h3>What should I do before using a new dApp on Fantom Chain?</h3><span class="faq-plus">+</span>
+        <h3>What is the safest way to start bridging Fantom to ETH?</h3><span class="faq-plus">+</span>
       </button>
       <div id="f10" class="faq-content" role="region" aria-labelledby="b10">
-        <p>Verify the domain, start with a small amount, use minimal approvals, confirm token contracts on the explorer, and keep gas buffers for revokes and retries.</p>
+        <p>Confirm chain IDs, bridge a small test amount first, save the tx hash, and verify on FTMScan + Etherscan before scaling.</p>
       </div>
     </div>
 
@@ -784,11 +789,52 @@
 </main>
 
 <footer class="container" role="contentinfo" style="padding:2rem 0; border-top:1px solid var(--line); margin-top:2rem">
-  <p class="muted">© 2026 Fantom Chain Guide. Educational content with a security-first operational focus.</p>
+  <p class="muted">© 2026 Fantom to ETH Guide. Educational content with a security-first operational focus.</p>
 </footer>
 
+<script>
+  // Accessible FAQ accordion
+  (function(){
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach((item) => {
+      const btn = item.querySelector('.faq-button');
+      const panel = item.querySelector('.faq-content');
+      const plus = item.querySelector('.faq-plus');
 
+      if(!btn || !panel) return;
 
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
+        // close all
+        items.forEach((it) => {
+          const b = it.querySelector('.faq-button');
+          const p = it.querySelector('.faq-content');
+          const s = it.querySelector('.faq-plus');
+          if(!b || !p) return;
+          b.setAttribute('aria-expanded', 'false');
+          p.style.maxHeight = '0px';
+          p.classList.remove('open');
+          if(s) s.textContent = '+';
+        });
 
-</body></html>
+        if(!isOpen){
+          btn.setAttribute('aria-expanded', 'true');
+          panel.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          if(plus) plus.textContent = '–';
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if(expanded){
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
