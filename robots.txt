@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /sushiswap/
+Sitemap: https://fantom-to-eth.github.io/sitemap.xml
